@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello</title>
+</head>
+
+<body>
+    <canvas id="canvas" style="border: 1px solid; display: block; margin: 50px;">
+        your browser don't support the canvas
+    </canvas>
+    hello world, i am srtian.
+    <script type="text/javascript">
+        window.onload = () => {
+            const canvas = document.getElementById('canvas')
+            canvas.width = 800
+            canvas.height = 600
+            const context = canvas.getContext('2d')
+            // const color = boolean => boolean ? 'white' : 'black'
+            const color = ['blue', 'yellow', 'red', 'green', 'sky blue', 'brown', 'purple', 'orange',
+                'cerulean blue'
+            ]
+
+            function drawRect(cxt, x, y, width, height, color = 'white') {
+                cxt.beginPath();
+                cxt.rect(x, y, width, height);
+
+                cxt.lineWidth = 5;
+                cxt.strokeStyle = color;
+
+                cxt.stroke();
+            }
+            for (var i = 0; i < 12; i++) {
+                drawRect(context, 200 + 10 * i, 100 + 10 * i, 400 - 20 * i, 400 - 20 * i, color[i]);
+            }
+            // drawAMatrix([150, 50], [650, 50], [650, 550], [150, 550])
+
+        }
+    </script>
+</body>
+
+</html>
