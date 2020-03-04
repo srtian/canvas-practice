@@ -14,38 +14,45 @@
     </canvas>
     hello world, i am srtian.
     <script type="text/javascript">
-        const canvas = document.getElementById('canvas')
-        canvas.width = 800
-        canvas.height = 600
-        const context = canvas.getContext('2d')
-        context.lineWidth = 5
-        context.beginPath()
-        context.moveTo(100, 100)
-        context.lineTo(100, 400)
-        context.strokeStyle = 'blue'
-        context.closePath()
-        context.stroke()
+        window.onload = () => {
+            const canvas = document.getElementById('canvas')
+            canvas.width = 800
+            canvas.height = 600
+            const context = canvas.getContext('2d')
+            const color = ['blue', 'yellow', 'red', 'green', 'sky blue', 'brown', 'purple', 'orange',
+                'cerulean blue'
+            ]
+            const drawAMatrix = ([x1, y1], [x2, y2], [x3, y3], [x4, y4], fillColor =
+                'blue', lineWidth = 3, lineColor = 'black') => {
+                context.beginPath();
+                context.moveTo(x1, y1);
+                context.lineTo(x2, y2);
+                context.lineTo(x3, y3);
+                context.lineTo(x4, y4);
+                context.closePath();
 
-        context.beginPath()
-        context.moveTo(100, 400)
-        context.lineTo(400, 400)
-        context.strokeStyle = 'yellow'
-        context.closePath()
-        context.stroke()
+                context.fillStyle = fillColor;
+                context.lineWidth = lineWidth;
+                context.strokeStyle = lineColor
 
-        context.beginPath()
-        context.moveTo(400, 100)
-        context.lineTo(400, 400)
-        context.strokeStyle = 'red'
-        context.closePath()
-        context.stroke()
+                context.fill();
+                context.stroke();
+            }
 
-        context.beginPath()
-        context.moveTo(400, 100)
-        context.lineTo(100, 100)
-        context.closePath()
-        context.strokeStyle = 'green'
-        context.stroke()
+            for (let i = 0; i < 10; i++) {
+                let x1 = 150 + 20 * i
+                let x2 = 650 - 20 * i
+                let y1 = 50 + 20 * i
+                let y2 = 550 - 20 * i
+                let coordinate1 = [x1, y1]
+                let coordinate2 = [x2, y1]
+                let coordinate3 = [x2, y2]
+                let coordinate4 = [x1, y2]
+                drawAMatrix(coordinate1, coordinate2, coordinate3, coordinate4, color[i])
+            }
+            // drawAMatrix([150, 50], [650, 50], [650, 550], [150, 550])
+
+        }
     </script>
 </body>
 
